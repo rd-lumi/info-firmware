@@ -1,0 +1,85 @@
+name: Sync with other storage
+on:
+  push:
+    branches: ['main']
+
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ['self-hosted', 'relay', 'infra']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync production to local minio
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.LOCAL_ENDPOINT }}
+          bucket: ${{ vars.LOCAL_MINIO_BUCKET }}
+          access_key: ${{ secrets.LOCAL_MINIO_ACCESS_KEY }}
+          secret_key: ${{ secrets.LOCAL_MINIO_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './production'
+          recursive: true
+
+      - name: Sync staging to local minio
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.LOCAL_ENDPOINT }}
+          bucket: ${{ vars.LOCAL_MINIO_BUCKET }}
+          access_key: ${{ secrets.LOCAL_MINIO_ACCESS_KEY }}
+          secret_key: ${{ secrets.LOCAL_MINIO_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './staging'
+          recursive: true
+
+      - name: Sync rnd to local minio
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.LOCAL_ENDPOINT }}
+          bucket: ${{ vars.LOCAL_MINIO_BUCKET }}
+          access_key: ${{ secrets.LOCAL_MINIO_ACCESS_KEY }}
+          secret_key: ${{ secrets.LOCAL_MINIO_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './rnd'
+          recursive: true
+
+      - name: Sync production to R2
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.R2_ENDPOINT }}
+          bucket: ${{ vars.R2_BUCKET }}
+          access_key: ${{ secrets.R2_ACCESS_KEY }}
+          secret_key: ${{ secrets.R2_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './production'
+          recursive: true
+          extra_args: --path off
+          api_signature_version: 'S3v4'
+
+      - name: Sync staging to R2
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.R2_ENDPOINT }}
+          bucket: ${{ vars.R2_BUCKET }}
+          access_key: ${{ secrets.R2_ACCESS_KEY }}
+          secret_key: ${{ secrets.R2_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './staging'
+          recursive: true
+          extra_args: --path off
+          api_signature_version: 'S3v4'
+
+      - name: Sync rnd to R2
+        uses: marverlous811/minio-upload@v1.2.0
+        with:
+          endpoint: ${{ vars.R2_ENDPOINT }}
+          bucket: ${{ vars.R2_BUCKET }}
+          access_key: ${{ secrets.R2_ACCESS_KEY }}
+          secret_key: ${{ secrets.R2_SECRET_KEY }}
+          remote_path: '/'
+          local_path: './rnd'
+          recursive: true
+          extra_args: --path off
+          api_signature_version: 'S3v4'
