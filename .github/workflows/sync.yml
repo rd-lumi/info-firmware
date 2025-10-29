@@ -20,7 +20,7 @@ jobs:
           access_key: ${{ secrets.LOCAL_MINIO_ACCESS_KEY }}
           secret_key: ${{ secrets.LOCAL_MINIO_SECRET_KEY }}
           remote_path: '/'
-          local_path: './production'
+          local_path: './'
           recursive: true
 
       - name: Sync staging to local minio
