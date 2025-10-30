@@ -1,4 +1,4 @@
 {
-    "data": "1.0.1|https://api-storage-staging.gofa.vn/firmware/lmva7/App_Main_V1_0_1_FOR_TEST_OTA.apk|68a36f3ace4d78ebf1f54cea221d6a7e",
+    "data": "1.0.1|https://api-storage-staging.gofa.vn/firmware/lmva7/App_Main_V1_0_1_FOR_TEST_OTA.apk|68a36f3ace4d78ebf1f54cea221d6a780909877e",
     "signature": "029E70724469AC55D84E319E21CF634EB65F0B2208233C18A75DB6AC50E48EF25381B2F4610CF2BD4BD4851D462D9A7B78224C1B718A840755CA71572CC3DA78"
 }
