@@ -1,0 +1,19 @@
+{
+  "version": "2025.11.08-01",
+  "env": "production",
+  "services": {
+    "active": {
+      "protocol": "wss",
+      "hosts": [
+        "82dd07fa1b99b9b670387e24a8e0fbfe.node1.lumi.biz:8001",
+        "82dd07fa1b99b9b670387e24a8e0fbfe.node2.lumi.biz:8001"
+      ],
+      "path": "/api/ws"
+    },
+    "ota": {
+      "protocol": "https",
+      "hosts": ["api.iot-console.aws.cluster.lumi.biz"],
+      "path": "/api/v0/device/config"
+    }
+  }
+}
