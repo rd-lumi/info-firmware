@@ -3,17 +3,12 @@
   "env": "staging",
   "services": {
     "active": {
-      "protocol": "wss",
-      "hosts": [
-        "82dd07fa1b99b9b670387e24a8e0fbfe.node1.staging.lumi.biz:8001",
-        "82dd07fa1b99b9b670387e24a8e0fbfe.node2.staging.lumi.biz:8001"
-      ],
-      "path": "/api/ws"
+      "host": "api.iot-console.rnd.cluster.lumi.biz",
+      "ports": { "wss": 8001, "https": 8003, "ws": 8002, "http": 8004 }
     },
     "ota": {
-      "protocol": "https",
-      "hosts": ["api.iot-console.rnd.cluster.lumi.biz"],
-      "path": "/api/v0/device/config"
+      "host": "api.iot-console.rnd.cluster.lumi.biz",
+      "ports": { "wss": 8005, "http": 8006 }
     }
   }
 }
