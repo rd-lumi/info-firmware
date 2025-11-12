@@ -3,7 +3,7 @@
   "env": "staging",
   "services": {
     "active": {
-      "host": "82dd07fa1b99b9b670387e24a8e0fbfe.node1.staging.lumi.biz",
+      "host": "f8edad4f6e4c44c715c524b65163019c.node1.staging.lumi.biz",
       "ports": { "wss": 9001, "https": 8003, "ws": 8001, "http": 8004 }
     },
     "ota": {
