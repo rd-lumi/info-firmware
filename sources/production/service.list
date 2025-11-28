@@ -9,6 +9,10 @@
     "ota": {
       "host": "api.iot-console.aws.cluster.lumi.biz",
       "ports": { "wss": 8005, "http": 8006 }
+    },
+    "voice_assistant" : {
+      "host": "voice-assistant-gateway.fpt.cluster.lumi.biz",
+      "ports": {"https": 443}
     }
   }
 }
