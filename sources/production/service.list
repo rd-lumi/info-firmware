@@ -24,10 +24,9 @@
     ],
     "voice_assistant": [
       {
-        "host": "api.iot-console.aws.cluster.lumi.biz",
+        "host": "voice-assistant-gateway.fpt.cluster.lumi.biz",
         "ports": {
-          "wss": 8005,
-          "http": 8006
+          "https": 443
         }
       }
     ]
