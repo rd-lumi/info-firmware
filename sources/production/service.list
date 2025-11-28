@@ -4,9 +4,7 @@
   "services": {
     "active": [
       {
-        "host": [
-          "f8edad4f6e4c44c715c524b65163019c.relay3.lumi.biz"
-        ],
+        "host": "f8edad4f6e4c44c715c524b65163019c.relay3.lumi.biz",
         "ports": {
           "wss": 9001,
           "https": 8003,
@@ -17,9 +15,7 @@
     ],
     "ota": [
       {
-        "host": [
-          "api.iot-console.aws.cluster.lumi.biz"
-        ],
+        "host": "api.iot-console.aws.cluster.lumi.biz",
         "ports": {
           "wss": 8005,
           "http": 8006
@@ -28,9 +24,7 @@
     ],
     "voice_assistant": [
       {
-        "host": [
-          "api.iot-console.aws.cluster.lumi.biz"
-        ],
+        "host": "api.iot-console.aws.cluster.lumi.biz",
         "ports": {
           "wss": 8005,
           "http": 8006
