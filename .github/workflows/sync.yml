@@ -1,16 +1,24 @@
 name: Sync with other storage
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
   workflow_dispatch:
 
 jobs:
   sync:
-    runs-on: ['self-hosted', 'relay', 'infra']
+    runs-on: ["self-hosted", "relay", "infra"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: debug
+        run: |
+          ls -lha
+          echo "LOCAL_ENDPOINT: ${{ vars.LOCAL_ENDPOINT }}"
+          echo "LOCAL_MINIO_BUCKET: ${{ vars.LOCAL_MINIO_BUCKET }}"
+          echo "R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}"
+          echo "R2_BUCKET: ${{ vars.R2_BUCKET }}"
 
       - name: Sync main to local minio
         uses: marverlous811/minio-upload@v1.2.0
@@ -19,8 +27,8 @@ jobs:
           bucket: ${{ vars.LOCAL_MINIO_BUCKET }}
           access_key: ${{ secrets.LOCAL_MINIO_ACCESS_KEY }}
           secret_key: ${{ secrets.LOCAL_MINIO_SECRET_KEY }}
-          remote_path: '/'
-          local_path: './'
+          remote_path: "/"
+          local_path: "./"
           recursive: true
 
       - name: Sync main to R2
@@ -30,8 +38,8 @@ jobs:
           bucket: ${{ vars.R2_BUCKET }}
           access_key: ${{ secrets.R2_ACCESS_KEY }}
           secret_key: ${{ secrets.R2_SECRET_KEY }}
-          remote_path: '/'
-          local_path: './'
+          remote_path: "/"
+          local_path: "./"
           recursive: true
           extra_args: --path off
-          api_signature_version: 'S3v4'
+          api_signature_version: "S3v4"
